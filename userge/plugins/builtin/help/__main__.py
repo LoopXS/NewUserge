@@ -121,14 +121,14 @@ if userge.has_bot:
                 try:
                     await func(c_q)
                 except MessageNotModified:
-                    await c_q.answer("Nothing Found to Refresh 🤷‍♂️", show_alert=True)
+                    await c_q.answer("Nothing Found To Refresh 🤷‍♂️", show_alert=True)
                 except MessageIdInvalid:
-                    await c_q.answer("Sorry, I Don't Have Permissions to edit this 😔",
+                    await c_q.answer("Sorry, I Don't Have Permissions To Edit This 😔",
                                      show_alert=True)
             else:
                 user_dict = await userge.bot.get_user_dict(config.OWNER_ID[0])
                 await c_q.answer(
-                    f"Only {user_dict['flname']} Can Access this...! Build Your Own @TheUserge 🤘",
+                    f"Only {user_dict['flname']} Can Access This !",
                     show_alert=True)
 
         return wrapper
@@ -192,7 +192,7 @@ if userge.has_bot:
             return
 
         if len(pos_list) == 2:
-            text = "🖥 **Userge Main Menu** 🖥"
+            text = "🖥 **Main Menu** 🖥"
             buttons = main_menu_buttons()
         elif len(pos_list) == 3:
             text, buttons = category_data(cur_pos)
@@ -247,14 +247,14 @@ if userge.has_bot:
     @check_owner
     async def callback_mm(callback_query: CallbackQuery):
         await callback_query.edit_message_text(
-            "🖥 **Userge Main Menu** 🖥", reply_markup=InlineKeyboardMarkup(main_menu_buttons()))
+            "🖥 **Main Menu** 🖥", reply_markup=InlineKeyboardMarkup(main_menu_buttons()))
 
     @userge.bot.on_callback_query(filters=filters.regex(pattern=r"^chgclnt$"))
     @check_owner
     async def callback_chgclnt(callback_query: CallbackQuery):
         if not userge.dual_mode:
             return await callback_query.answer(
-                "you using [BOT MODE], can't change client.", show_alert=True)
+                "You Using [BOT MODE], Can't Change Client.", show_alert=True)
 
         config.Dynamic.USER_IS_PREFERRED = not config.Dynamic.USER_IS_PREFERRED
 
@@ -284,7 +284,7 @@ if userge.has_bot:
         msg_id = str(c_q.matches[0].group(1))
 
         if msg_id not in PRVT_MSGS:
-            await c_q.answer("message now outdated !", show_alert=True)
+            await c_q.answer("Message Now Outdated !", show_alert=True)
             return
 
         user_id, flname, msg = PRVT_MSGS[msg_id]
@@ -293,7 +293,7 @@ if userge.has_bot:
             await c_q.answer(msg, show_alert=True)
         else:
             await c_q.answer(
-                f"Only {flname} can see this Private Msg... 😔", show_alert=True)
+                f"Only {flname} Can See This Private Msg !", show_alert=True)
 
     def is_filter(name: str) -> bool:
         split_ = name.split('.')
@@ -439,22 +439,19 @@ if userge.has_bot:
         results = [
             InlineQueryResultArticle(
                 id=uuid4(),
-                title="Repo",
+                title="𝒉𝒆𝒂𝒓𝒕𝒍𝒆𝒔𝒔",
                 input_message_content=InputTextMessageContent(
-                    "**Here's how to setup Userge** 😎"
+                    "​​𝓒𝓵𝓲𝓬𝓴 𝓣𝓱𝓮 𝓑𝓾𝓽𝓽𝓸𝓷 𝓑𝓮𝓵𝓸𝔀 𝓣𝓸 𝓒𝓸𝓷𝓽𝓪𝓬𝓽"
                 ),
-                url="https://github.com/UsergeTeam/Userge",
-                description="Setup Your Own",
-                thumb_url="https://imgur.com/download/Inyeb1S",
+                url="https://t.me/DarkPentester",
+                description="𝒍𝒂 𝒔𝒆𝒖𝒍𝒆 𝒓𝒂𝒊𝒔𝒐𝒏 𝒑𝒐𝒖𝒓 𝒍𝒂𝒒𝒖𝒆𝒍𝒍𝒆 𝒋𝒆 𝒓𝒆𝒔𝒑𝒊𝒓𝒆 | 𝒂𝒕𝒊 ♡",
+                thumb_url="https://telegra.ph/file/0052f0abd1487477793ad.jpg",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                "🧰 Userge Repo",
-                                url="https://github.com/UsergeTeam/Userge"),
-                            InlineKeyboardButton(
-                                "🖥 Deploy Userge",
-                                url="https://t.me/theUserge/102")
+                                "✨ ꜱᴜᴘᴘᴏʀᴛ ✨",
+                                url="https://t.me/DarkPentester")
                         ]
                     ]
                 )
@@ -467,11 +464,11 @@ if userge.has_bot:
                     id=uuid4(),
                     title="Main Menu",
                     input_message_content=InputTextMessageContent(
-                        "🖥 **Userge Main Menu** 🖥"
+                        "🖥 **Main Menu** 🖥"
                     ),
-                    url="https://github.com/UsergeTeam/Userge",
-                    description="Userge Main Menu",
-                    thumb_url="https://imgur.com/download/Inyeb1S",
+                    url="https://t.me/DarkPentester",
+                    description="Main Menu",
+                    thumb_url="https://telegra.ph/file/0052f0abd1487477793ad.jpg",
                     reply_markup=InlineKeyboardMarkup(main_menu_buttons())
                 )
             )
@@ -494,16 +491,16 @@ if userge.has_bot:
                 prvte_msg = [[InlineKeyboardButton(
                     "Show Message 🔐", callback_data=f"prvtmsg({inline_query.id})")]]
 
-                msg_c = f"🔒 A **private message** to {'@' + user.username}, "
-                msg_c += "Only he/she can open it."
+                msg_c = f"🔒 A **Private Message** To {'@' + user.username}, "
+                msg_c += "Only He/She Can Open It !"
 
                 results.append(
                     InlineQueryResultArticle(
                         id=uuid4(),
-                        title=f"A Private Msg to {user.first_name}",
+                        title=f"A Private Msg To {user.first_name}",
                         input_message_content=InputTextMessageContent(msg_c),
-                        description="Only he/she can open it",
-                        thumb_url="https://imgur.com/download/Inyeb1S",
+                        description="Only He/She Can Open It !",
+                        thumb_url="https://telegra.ph/file/0052f0abd1487477793ad.jpg",
                         reply_markup=InlineKeyboardMarkup(prvte_msg)
                     )
                 )
@@ -524,7 +521,7 @@ if userge.has_bot:
                     button = [
                         [
                             InlineKeyboardButton(
-                                "Info!", url=f"t.me/{bot_username}?start={cmd}"
+                                "Info", url=f"t.me/{bot_username}?start={cmd}"
                             )
                         ]
                     ]
@@ -534,8 +531,8 @@ if userge.has_bot:
                             id=uuid4(),
                             title="Inline Error Text",
                             input_message_content=InputTextMessageContent(err_text),
-                            description="Inline Error text with help support button.",
-                            thumb_url="https://imgur.com/download/Inyeb1S",
+                            description="Inline Error Text With Help Support Button.",
+                            thumb_url="https://telegra.ph/file/0052f0abd1487477793ad.jpg",
                             reply_markup=InlineKeyboardMarkup(button)
                         )
                     )
